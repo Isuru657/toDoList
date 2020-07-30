@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const mongoose= require("mongoose");
 const _= require("lodash");
 
-mongoose.connect("mongodb+srv://admin-isuru:Asha123@cluster0.i1kld.mongodb.net/todolistDB?retryWrites=true&w=majority", {useNewUrlParser: true});
+mongoose.connect("mongodb+srv://admin-isuru:Asha123@cluster0.i1kld.mongodb.net/todolistDB?retryWrites=true&w=majority", {useUnifiedTopology: true });
 
 const todoSchema = {
   name: String
@@ -147,6 +147,9 @@ app.get("/:customListName", function(req, res){
 
 })
 
-app.listen(3000, function() {
-  console.log("Server started on port 3000.");
+
+
+
+app.listen(process.env.PORT || 3000, function() {
+  console.log("Connected to server.");
 });
